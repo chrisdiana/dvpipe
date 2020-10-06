@@ -6,6 +6,11 @@ dvpipe allows you to pass data from function to function sequentially as you wou
 tradional method chaining. You can use dvpipe to transform any type of data not
 just DataFrames as with [DataFrame.pipe()](https://pandas.pydata.org/pandas-docs/stable/reference/api/pandas.DataFrame.pipe.html)
 
+Installation:
+```
+$ pip install dvpipe
+```
+
 Example Usage:
 ```python
 from dvpipe import pipe

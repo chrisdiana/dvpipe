@@ -6,6 +6,9 @@ dvpipe allows you to pass data from function to function sequentially as you wou
 tradional method chaining. You can use dvpipe to transform any type of data not
 just DataFrames as with [DataFrame.pipe()](https://pandas.pydata.org/pandas-docs/stable/reference/api/pandas.DataFrame.pipe.html)
 
+![Version](https://img.shields.io/pypi/v/dvpipe)
+![License](https://img.shields.io/github/license/chrisdiana/dvpipe.svg)
+
 ### Installation
 ```
 $ pip install dvpipe
@@ -13,7 +16,6 @@ $ pip install dvpipe
 
 ### Usage
 ```python
-
 processed_data = pipe(data, func_a, func_b, func_c, ...)
 ```
 
@@ -21,11 +23,19 @@ processed_data = pipe(data, func_a, func_b, func_c, ...)
 ```python
 from dvpipe import pipe
 
-
 data = (pipe(data,
              clean,
              transform,
              aggregate))
+```
+
+### Why?
+dvpipe attempts to help solve this classic problem seen in many data tranformation applications to allow for cleaner, more understandable code.
+
+```python
+data = clean(data)
+data = transform(data)
+data = aggregate(data)
 ```
 
 ### Functions with Arguments

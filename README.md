@@ -41,18 +41,19 @@ from dvpipe import pipe
 raw_data = {'foo': 1, 'bar': 2}
 
 def subtract_foo(data):
-  data['foo'] = data['foo'] - 1
-  return data
-  
-def add_bar(data):
-  data['bar'] = data['bar'] + 1
-  return data
-  
-def add_entry(data, entry):
-  return data.update(entry)
+    data['foo'] = data['foo'] - 1
+    return data
 
-data = (pipe(data,
-             replace_bar,
+def add_bar(data):
+    data['bar'] = data['bar'] + 1
+    return data
+
+def add_entry(data, entry):
+    data.update(entry)
+    return data
+
+data = (pipe(raw_data,
+             subtract_foo,
              add_bar,
              (add_entry, {'foobar': 5})))
 ```

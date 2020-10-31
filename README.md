@@ -6,24 +6,55 @@ dvpipe allows you to pass data from function to function sequentially as you wou
 tradional method chaining. You can use dvpipe to transform any type of data not
 just DataFrames as with [DataFrame.pipe()](https://pandas.pydata.org/pandas-docs/stable/reference/api/pandas.DataFrame.pipe.html)
 
-Installation:
+### Installation
 ```
 $ pip install dvpipe
 ```
 
-Example Usage:
+### Usage
+```python
+
+processed_data = pipe(data, func_a, func_b, func_c, ...)
+```
+
+### Example
 ```python
 from dvpipe import pipe
 
 
-df = (pipe(df,
-           clean,
-           transform,
-           dump_to_csv))
+data = (pipe(data,
+             clean,
+             transform,
+             aggregate))
 ```
 
-
+### Functions with Arguments
 Use Python tuples for functions with parameters.
 ```python
-df = pipe(df, (dump_to_csv, 'output.csv'))
+df = pipe(df, (replace_foo, 'bar'))
 ```
+
+### Full Example
+```python
+from dvpipe import pipe
+
+raw_data = {'foo': 1, 'bar': 2}
+
+def subtract_foo(data):
+  data['foo'] = data['foo'] - 1
+  return data
+  
+def add_bar(data):
+  data['bar'] = data['bar'] + 1
+  return data
+  
+def add_entry(data, entry):
+  return data.update(entry)
+
+data = (pipe(data,
+             replace_bar,
+             add_bar,
+             (add_entry, {'foobar': 5})))
+```
+
+

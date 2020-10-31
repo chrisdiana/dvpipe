@@ -6,7 +6,7 @@ with open("README.md", "r") as fh:
 
 setuptools.setup(
     name="dvpipe",
-    version="0.0.3",
+    version="0.0.4",
     author="Chris Diana",
     author_email="cdiana.media@gmail.com",
     description="A small Python utility that pipes data from function to function in sequencial order.",
